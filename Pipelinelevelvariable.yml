@@ -1,0 +1,25 @@
+# Pipeline level variables
+
+# This pipeline will print the pipelineVariable value from pipeline level variables section.
+trigger: none
+# - main
+
+pool: kubernetes-self-hosted-agent
+
+# Define a pipeline-level variable
+variables:
+  pipelineVariable: "Hello from pipeline level variable"
+
+# Define stages and jobs
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo "$(pipelineVariable)"
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo $(pipelineVariable)
+      displayName: "Pipeline level"
