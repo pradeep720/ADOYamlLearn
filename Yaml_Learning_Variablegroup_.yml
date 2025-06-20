@@ -16,5 +16,5 @@ stages:
   - job: BuildJob
     displayName: "Build Job"
     steps:
-    - script: echo $(groupVariable)
+    - script: echo $(Name)
       displayName: "Variable Group"
