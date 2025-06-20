@@ -2,7 +2,7 @@
 
 trigger: none
 
-pool: kubernetes-self-hosted-agent
+pool: ubuntu-latest
 
 # Define stages
 stages:
