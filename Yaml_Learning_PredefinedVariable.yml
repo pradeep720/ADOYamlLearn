@@ -1,0 +1,18 @@
+# This pipeline will print the SourceBranch, BuildNumber, and DefinitionName values from pre defined variables section.
+
+trigger: none
+
+pool: kubernetes-self-hosted-agent
+
+# Define stages
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: |
+              echo "Building on branch $(Build.SourceBranch)"
+              echo "Current build number: $(Build.BuildNumber)"
+              echo "Definition name: $(Build.DefinitionName)"
+      displayName: "Pre Defined"
