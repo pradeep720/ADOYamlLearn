@@ -1,0 +1,20 @@
+# This pipeline will print the groupVariable value from the library group of myVariableGroup.
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+# Reference a variable group
+variables:
+- group: myVariableGroup
+
+# Define stages
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: echo $(groupVariable)
+      displayName: "Variable Group"
